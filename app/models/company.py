@@ -4,8 +4,8 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.database.base import Base
 
 
-class User(Base):
-    __tablename__ = "users"
+class Company(Base):
+    __tablename__ = "companies"
 
     id: Mapped[int] = mapped_column(
         primary_key=True,
@@ -14,24 +14,27 @@ class User(Base):
 
     name: Mapped[str] = mapped_column(
         String(100),
-        unique=True,
         nullable=False,
-        index=True,
     )
-    email: Mapped[str | None] = mapped_column(
+
+    email: Mapped[str] = mapped_column(
         String(255),
         unique=True,
-        nullable=True,
+        nullable=False,
         index=True,
     )
 
-    hashed_password: Mapped[str] = mapped_column(
+    phone: Mapped[str | None] = mapped_column(
+        String(20),
+        nullable=True,
+    )
+
+    address: Mapped[str | None] = mapped_column(
         String(255),
-        nullable=False,
+        nullable=True,
     )
 
     is_active: Mapped[bool] = mapped_column(
         Boolean,
         default=True,
-        nullable=False,
     )

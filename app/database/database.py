@@ -1,9 +1,7 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.core.config import settings
 
-engine = create_engine(settings.DATABASE_URL,)
-
-class Base(DeclarativeBase):
-    pass
+engine = create_async_engine(
+    settings.DATABASE_URL,
+)

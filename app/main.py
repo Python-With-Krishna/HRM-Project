@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 
-from app.api.routes.user import router as users_router
-
+from app.api.routes.company import router as company_router
 
 app = FastAPI(
     title="HRM API",
@@ -9,8 +8,7 @@ app = FastAPI(
 )
 
 
-app.include_router(users_router)
-
+app.include_router(company_router)
 
 @app.get("/")
 def root():
