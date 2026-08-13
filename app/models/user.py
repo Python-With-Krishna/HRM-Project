@@ -1,11 +1,13 @@
-from sqlalchemy import Boolean, String
+import datetime
+
+from sqlalchemy import Boolean, DateTime, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.database.base import Base
 
 
-class Company(Base):
-    __tablename__ = "companies"
+class User(Base):
+    __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(
         primary_key=True,
@@ -28,13 +30,16 @@ class Company(Base):
         String(20),
         nullable=True,
     )
-
-    address: Mapped[str | None] = mapped_column(
+    password: Mapped[str] = mapped_column(
         String(255),
-        nullable=True,
+        nullable=False,
     )
-
     is_active: Mapped[bool] = mapped_column(
         Boolean,
         default=True,
     )
+    updated_at: Mapped[datetime.datetime] = mapped_column(
+        DateTime,
+        default=datetime.datetime.utcnow,
+    )
+

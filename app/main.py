@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.api.routes.company import router as company_router
+from app.api.routes.user import router as user_router
 
 app = FastAPI(
     title="HRM API",
@@ -8,10 +8,9 @@ app = FastAPI(
 )
 
 
-app.include_router(company_router)
+app.include_router(user_router)
+
 
 @app.get("/")
 def root():
-    return {
-        "message": "HRM API is running"
-    }
+    return {"message": "HRM API is running"}

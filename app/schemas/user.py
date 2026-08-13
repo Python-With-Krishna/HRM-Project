@@ -1,19 +1,22 @@
+from datetime import datetime
+
 from pydantic import BaseModel, EmailStr
 
 
-class CompanyCreate(BaseModel):
+class UserCreate(BaseModel):
     name: str
     email: EmailStr
     phone: str | None = None
-    address: str | None = None
+    password: str
+    
 
 
-class CompanyResponse(BaseModel):
+class UserResponse(BaseModel):
     id: int
     name: str
     email: EmailStr
     phone: str | None = None
-    address: str | None = None
     is_active: bool
+    updated_at: datetime
 
     model_config = {"from_attributes": True}
