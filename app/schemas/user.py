@@ -20,3 +20,23 @@ class UserResponse(BaseModel):
     updated_at: datetime
 
     model_config = {"from_attributes": True}
+    
+    
+    
+class UserUpdate(BaseModel):
+    name: str | None = None
+    email: EmailStr | None = None
+    phone: str | None = None
+
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+    
+
+class loginResponse(BaseModel):
+    message: str
+    email: EmailStr
+
+    model_config = {"from_attributes": True}

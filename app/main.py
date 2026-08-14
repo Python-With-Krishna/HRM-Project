@@ -7,10 +7,4 @@ app = FastAPI(
     version="1.0.0",
 )
 
-
 app.include_router(user_router)
-
-
-@app.get("/")
-def root():
-    return {"message": "HRM API is running"}
